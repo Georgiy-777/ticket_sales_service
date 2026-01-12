@@ -1,1 +1,0 @@
-{"version":3,"file":"health.response.js","sourceRoot":"","sources":["../../../../src/core/dto/responses/health.response.ts"],"names":[],"mappings":";;;;;;;;;;;;AAAA,6CAA8C;AAE9C,MAAa,cAAc;IAIlB,MAAM,CAAS;IAIf,SAAS,CAAS;CAC1B;AATD,wCASC;AALQ;IAHN,IAAA,qBAAW,EAAC;QACX,OAAO,EAAE,IAAI;KACd,CAAC;;8CACoB;AAIf;IAHN,IAAA,qBAAW,EAAC;QACX,OAAO,EAAE,0BAA0B;KACpC,CAAC;;iDACuB"}
