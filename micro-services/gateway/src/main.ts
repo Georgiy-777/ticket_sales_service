@@ -1,4 +1,4 @@
-import { Logger } from '@nestjs/common'
+import { Logger, ValidationPipe } from '@nestjs/common'
 import { ConfigService } from '@nestjs/config'
 import { NestFactory } from '@nestjs/core'
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger'
@@ -9,11 +9,13 @@ async function bootstrap() {
 	const app = await NestFactory.create(AppModule)
 	const config = app.get(ConfigService)
 	const logger = new Logger()
-
-	app.enableCors({
-		origin: config.getOrThrow<string>('HTTP_CORS').split(','),
-		credentials: true
-	})
+	app.useGlobalPipes(
+		new ValidationPipe({
+			transform: true,
+			whitelist: true
+		})
+	)
+	app.enableCors({})
 
 	const swaggerCofig = new DocumentBuilder()
 		.setTitle('API Service')

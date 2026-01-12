@@ -9,6 +9,10 @@ async function bootstrap() {
     const app = await core_1.NestFactory.create(app_module_1.AppModule);
     const config = app.get(config_1.ConfigService);
     const logger = new common_1.Logger();
+    app.useGlobalPipes(new common_1.ValidationPipe({
+        transform: true,
+        whitelist: true
+    }));
     app.enableCors({
         origin: config.getOrThrow('HTTP_CORS').split(','),
         credentials: true
