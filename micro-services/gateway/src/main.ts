@@ -24,7 +24,6 @@ async function bootstrap() {
 
 	const port = config.getOrThrow<number>('HTTP_PORT')
 	const host = config.getOrThrow<string>('HTTP_HOST')
-	app.setGlobalPrefix('api')
 	await app.listen(port)
 	logger.log(`Gateway service is running : ${host}`)
 }

@@ -12,8 +12,9 @@ export class AuthController {
 	public constructor(private readonly authService: AuthService) {}
 
 	@GrpcMethod('AuthService', 'SendOtp')
-	public sendOtp(request: SendOtpRequest): Promise<SendOtpResponse> {
-		console.log(request)
-		return { success: true }
+	public sendOtp(data: SendOtpRequest): SendOtpResponse {
+		console.log('🚀 ~ AuthController ~ sendOtp ~ data:', data)
+
+		return { ok: true }
 	}
 }

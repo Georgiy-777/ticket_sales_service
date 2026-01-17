@@ -1,8 +1,9 @@
 import { Module } from '@nestjs/common'
+import { ConfigService } from '@nestjs/config'
+import { ClientsModule, Transport } from '@nestjs/microservices'
 
 import { AuthController } from './auth.controller'
-import { ClientsModule } from '@nestjs/microservices'
-import { ConfigService } from '@nestjs/config'
+import { AuthClientGrpc } from './auth.grpc'
 
 @Module({
 	imports: [
@@ -10,17 +11,19 @@ import { ConfigService } from '@nestjs/config'
 			{
 				name: 'AUTH_PACKAGE',
 				useFactory: (configService: ConfigService) => ({
-					transport: 0,
+					transport: Transport.GRPC,
 					options: {
-							package: 'auth.v1',
-							protoPath: 'node_modules/@teacinema/contracts/proto/auth.proto',
-			            url: 'localhost:50051',
-					  }
-				})
+						package: 'auth.v1',
+						protoPath:
+							'node_modules/@teacinema/contracts/proto/auth.proto',
+						url: configService.get<string>('GRPC_AUTH_URL')
+					}
+				}),
+				inject: [ConfigService]
 			}
 		])
-	]
+	],
 	controllers: [AuthController],
-	providers: []
+	providers: [AuthClientGrpc]
 })
 export class AuthModule {}

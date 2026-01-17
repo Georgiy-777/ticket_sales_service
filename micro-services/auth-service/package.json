@@ -28,8 +28,12 @@
     "@nestjs/mapped-types": "*",
     "@nestjs/microservices": "^11.1.12",
     "@nestjs/platform-express": "^11.0.1",
+    "@prisma/adapter-pg": "^7.2.0",
+    "@prisma/client": "^7.2.0",
     "@teacinema/contracts": "^1.5.1",
     "@teacinema/core": "^1.0.3",
+    "dotenv": "^17.2.3",
+    "prisma": "^7.2.0",
     "reflect-metadata": "^0.2.2",
     "rxjs": "^7.8.1"
   },
